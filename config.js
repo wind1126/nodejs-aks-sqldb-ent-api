@@ -5,7 +5,7 @@ config.userName = "ganesh";
 config.password = "f5help!!";
 config.options = {
 		rowCollectionOnRequestCompletion: true,
-		database: "licensed",
+		database: "licensedb",
 		encrypt: true
 	}
 
