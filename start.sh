@@ -1,1 +1,1 @@
-DEBUG=nodejs-k8s-po-service-api:* npm run devstart
+DEBUG=nodejs-k8s-ent-service-api:* npm run devstart
