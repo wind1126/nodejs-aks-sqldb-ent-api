@@ -27,16 +27,6 @@ spec:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /entitlements
-              port: http
-            initialDelaySeconds: {{ .Values.checks.livenessInitialDelay }}
-            periodSeconds: {{ .Values.checks.livenessProbeDelay }}  
-          readinessProbe:
-            httpGet:
-              path: /entitlements
-              port: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
