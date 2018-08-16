@@ -29,13 +29,13 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /entitlements
               port: http
             initialDelaySeconds: {{ .Values.checks.livenessInitialDelay }}
             periodSeconds: {{ .Values.checks.livenessProbeDelay }}  
           readinessProbe:
             httpGet:
-              path: /
+              path: /entitlements
               port: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
