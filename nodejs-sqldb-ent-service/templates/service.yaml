@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "nodejs-sqldb-ent-service.fullname" . }}
+  labels:
+    app: {{ template "nodejs-sqldb-ent-service.name" . }}
+    chart: {{ template "nodejs-sqldb-ent-service.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ template "nodejs-sqldb-ent-service.name" . }}
+    release: {{ .Release.Name }}
