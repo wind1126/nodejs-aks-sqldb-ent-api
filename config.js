@@ -1,11 +1,11 @@
 let config = {}
 
-config.server = "pariksazdb.database.windows.net";
-config.userName = "ganesh";
-config.password = "f5help!!";
+config.server = "xxxxx.database.windows.net";
+config.userName = "xxxxx";
+config.password = "xxxxx";
 config.options = {
 		rowCollectionOnRequestCompletion: true,
-		database: "licensedb",
+		database: "xxxxx",
 		encrypt: true
 	}
 
