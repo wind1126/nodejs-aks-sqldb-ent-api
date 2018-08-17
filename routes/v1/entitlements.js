@@ -12,6 +12,7 @@ let entModel = new EntitlementModel();
 let entController = new EntitlementController(entModel);
 
 // Routes
+router.get('/', entController.getInfo.bind(entController));
 
 // Get details of a single order
 router.get('/:id', entController.getEntitlement.bind(entController));

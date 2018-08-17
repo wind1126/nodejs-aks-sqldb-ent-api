@@ -6,8 +6,20 @@ function EntitlementController(entModel) {
 }
 
 EntitlementController.prototype = {
+	getInfo: function(req, res) {
+		console.log("EntitlementController.getInfo()");
+		let self = this;
 
-getEntitlement: function(req, res) {
+		self.entitlementModel.getInfo(function(err, item) {
+			if (err) {
+				throw err;
+			}
+			else {
+				res.json(item);
+			};
+		});
+	},
+	getEntitlement: function(req, res) {
 		console.log("EntitlementController.getEntitlement()");
 		let self = this;
 
@@ -16,7 +28,7 @@ getEntitlement: function(req, res) {
 				throw err;
 			}
 			else {
-				res.send(item);
+				res.json(item);
 			};
 		});
 	}
