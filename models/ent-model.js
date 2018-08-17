@@ -14,7 +14,7 @@ EntitlementModel.prototype = {
 			name: 'Entitlement Controller',
 			desccription: 'API for manipulating Entitlements',
 			owner: 'Microsoft Inc. Copyright @2018.  All rights reserved.',
-			testUrl: 'https://IP/entitlements/{fguid}'
+			getUrl: 'https://IP/entitlements/{fguid}'
 		};
 
 		callback(null, result);
