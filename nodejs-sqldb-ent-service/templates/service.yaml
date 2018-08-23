@@ -10,10 +10,14 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.targetPort }}
+    - port: {{ .Values.service.httpPort }}
+      targetPort: {{ .Values.service.httpTargetPort }}
       protocol: TCP
       name: http
+    - port: {{ .Values.service.httpsPort }}
+      targetPort: {{ .Values.service.httpsTargetPort }}
+      protocol: TCP
+      name: https
   selector:
     app: {{ template "nodejs-sqldb-ent-service.name" . }}
     release: {{ .Release.Name }}

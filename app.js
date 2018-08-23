@@ -1,6 +1,15 @@
 const express = require('express')
 const app = express();
 
+//Load fs and http, https libraries
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
+
+var privateKey = fs.readFileSync('sslcerts/server.key', 'utf8');
+var certificate = fs.readFileSync('sslcerts/server.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
@@ -32,6 +41,14 @@ app.use(function(err, req, res, next) {
   res.json('{}');
 });
 
-app.listen(8080, () => {
+/** app.listen(8080, () => {
 	console.log('Entitlements Service listening on port 8080')
-});
+});*/
+
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials,app);
+
+httpServer.listen(8080);
+console.log('HTTP listener running on port 8080');
+httpsServer.listen(8443);
+console.log('HTTPS listener running on port 8443');

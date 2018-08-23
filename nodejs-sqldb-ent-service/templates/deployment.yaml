@@ -19,13 +19,20 @@ spec:
         app: {{ template "nodejs-sqldb-ent-service.name" . }}
         release: {{ .Release.Name }}
     spec:
+      volumes:
+      - name: sslkey-volume
+        secret:
+          secretName: ssl-key-secret
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.service.targetPort }}
+              containerPort: {{ .Values.service.httpTargetPort }}
+              protocol: TCP
+            - name: https
+              containerPort: {{ .Values.service.httpsTargetPort }}
               protocol: TCP
           livenessProbe:
             httpGet:
@@ -37,6 +44,10 @@ spec:
             httpGet:
               path: /
               port: http
+          volumeMounts:
+          - name: sslkey-volume
+            mountPath: /usr/src/app/sslcerts
+            readOnly: true
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

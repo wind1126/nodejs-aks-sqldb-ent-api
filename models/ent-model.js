@@ -12,9 +12,9 @@ EntitlementModel.prototype = {
 		console.log("EntitlementRouter() - Get /");
 		var result = {
 			name: 'Entitlement Controller',
-			desccription: 'API for manipulating Entitlements',
+			desccription: 'API for Entitlements',
 			owner: 'Microsoft Inc. Copyright @2018.  All rights reserved.',
-			getUrl: 'https://IP/entitlements/{fguid}'
+			getUrl: 'https://<IP>/entitlements/{fguid}'
 		};
 
 		callback(null, result);

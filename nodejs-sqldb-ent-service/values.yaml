@@ -11,8 +11,10 @@ image:
 
 service:
   type: LoadBalancer
-  port: 80
-  targetPort: 8080
+  httpPort: 80
+  httpTargetPort: 8080
+  httpsPort: 443
+  httpsTargetPort: 8443
 
 checks:
   livenessInitialDelay: 5
