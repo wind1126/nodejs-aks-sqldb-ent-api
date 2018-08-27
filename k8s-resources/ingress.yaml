@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: f5poc-ingress
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: f5poc.westus.cloudapp.azure.com
+    http:
+      paths:
+      - path: /f5
+        backend:
+          serviceName: f5-ent-service
+          servicePort: 8080
